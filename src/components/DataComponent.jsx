@@ -12,7 +12,7 @@ const DataComponent = () => {
   useEffect(() => {
     dispatch(fetchData());
     setCoinData(data);
-  }, [dispatch, data]);
+  }, [dispatch]);
 
   // Search Handler
   const handleSearch = (e) => {
