@@ -5,14 +5,18 @@ import { useEffect, useState } from "react";
 const DataComponent = () => {
   const dispatch = useDispatch();
   const { data, loading, error } = useSelector((state) => state);
-  const [coinData, setCoinData] = useState(data);
+  const [coinData, setCoinData] = useState([]);
   const [userSearch, setUserSearch] = useState("");
-  console.log(data);
-  // Uncomment when using Redux for dynamic data fetching
+
+  // Fetch data when component mounts
   useEffect(() => {
     dispatch(fetchData());
+  }, [dispatch]);
+
+  // Update coinData when data from redux changes
+  useEffect(() => {
     setCoinData(data);
-  }, [dispatch, coinData]);
+  }, [data]);
 
   // Search Handler
   const handleSearch = (e) => {
